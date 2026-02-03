@@ -14,9 +14,12 @@ describe('AppController', () => {
     appController = app.get<AppController>(AppController);
   });
 
-  describe('root', () => {
-    it('should return "Hello World!"', () => {
-      expect(appController.getHealth()).toBe('Hello World!');
+  describe('health', () => {
+    it('should return health object', () => {
+      const result = appController.getHealth();
+
+      expect(result).toMatchObject({ ok: true });
+      expect(typeof result.uptime).toBe('number');
     });
   });
 });
